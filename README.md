@@ -4,9 +4,38 @@ A selection of code examples that demonstrate a subset foundational
 computer science concepts. Each example is designed to be a readable
 and complete demonstration of the topic it is covering.
 
-As of yet, a full description of the intended scope of this project
-is in the works. However, implementations of a Dynamic Array and a
-Linked List have been made in large part already.
-They are in the Source/DataStructures for anyone who wants to check them out.
+These are divided up into sections based on the area of computer
+science they would best be classified under. Following here is
+checklist of topics that are on the roadmap for this project.
 
-There is also an implementation of Dijkstra's Algorithm in Source/Algorithms.
+The choice of language for each topic is decided based on a few criteria:
+* The language should be widely readable and understandable
+* If the language's standard library has an implementation of the
+  concept, the solution should not use it.
+
+This is an early-stage project and the details of what it will
+eventually contain are not finalized. They represent the author's
+guess at some useful topics to cover.
+
+## Data Structures
+
+- [x] Dynamic Array
+- [x] Linked List
+- [ ] Hash Table
+- [ ] Binary Search Tree
+- [ ] Priority Queue
+
+## Algorithms
+
+#### Sorting Algorithms
+- [ ] Bubble Sort
+- [ ] Merge Sort
+- [ ] Heap Sort
+- [ ] Quick Sort
+
+#### Graph Algorithms
+- [ ] Depth-first Search
+- [ ] Breadth-first Search
+- [x] Dijkstra's Algorithm
+- [ ] The Bellman-Ford Algorithm
+- [ ] The Floyd-Warshall Algorithm
