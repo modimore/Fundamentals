@@ -9,19 +9,25 @@
  * places where each is thrown.
  */
 
-#ifndef __Fundamentals_DS_Exceptions_hpp__
-#define __Fundamentals_DS_Exceptions_hpp__
+#ifndef Fundamentals_DS_Exceptions_hpp_
+#define Fundamentals_DS_Exceptions_hpp_
 
 /**
  * Exception Base Class
  */
 class Exception {
 };
-
+/**
+ * Exception thrown when trying to access beyond the bounds of
+ * a container class.
+ */
 class OutOfBoundsError : public Exception {
 };
-
+/**
+ * Exception thrown when passing an iterator from a different list
+ * into a linked list's insert or remove method.
+ */
 class MismatchedIteratorError : public Exception {
 };
 
-#endif // __Fundamentals_DS_Exceptions_hpp__
+#endif // Fundamentals_DS_Exceptions_hpp_
