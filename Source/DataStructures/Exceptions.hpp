@@ -29,5 +29,21 @@ class OutOfBoundsError : public Exception {
  */
 class MismatchedIteratorError : public Exception {
 };
+/**
+ * Exception thrown when trying to construct a Hashed data structure without
+ * providing a hash function.
+ */
+class MissingHashFunctionError : public Exception {
+};
+/**
+ * Exception thrown when trying to insert a duplicate key into a HashMap.
+ */
+class DuplicateKeyError : public Exception {
+};
+/**
+ * Exception thrown when looking up a missing key in a HashMap.
+ */
+class MissingKeyError : public Exception {
+};
 
 #endif // Fundamentals_DS_Exceptions_hpp_

@@ -21,7 +21,8 @@ guess at some useful topics to cover.
 
 - [x] Dynamic Array
 - [x] Linked List
-- [ ] Hash Table
+- [x] Hash Map
+- [ ] Hash Set
 - [ ] Binary Search Tree
 - [ ] Priority Queue
 
