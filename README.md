@@ -1,6 +1,6 @@
 # Fundamentals
 
-A selection of code examples that demonstrate a subset foundational
+A selection of code examples that demonstrate a subset of foundational
 computer science concepts. Each example is designed to be a readable
 and complete demonstration of the topic it is covering.
 
@@ -32,7 +32,7 @@ guess at some useful topics to cover.
 - [ ] Bubble Sort
 - [ ] Merge Sort
 - [ ] Heap Sort
-- [ ] Quick Sort
+- [x] Quick Sort
 
 #### Graph Algorithms
 - [ ] Depth-first Search
