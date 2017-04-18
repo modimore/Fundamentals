@@ -40,3 +40,7 @@ guess at some useful topics to cover.
 - [x] Dijkstra's Algorithm
 - [ ] The Bellman-Ford Algorithm
 - [ ] The Floyd-Warshall Algorithm
+
+### Mathematical
+- [x] Euclidean Algorithm
+- [x] Extended Euclidean Algorithm
