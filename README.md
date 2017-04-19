@@ -30,8 +30,8 @@ guess at some useful topics to cover.
 
 #### Sorting Algorithms
 - [ ] Bubble Sort
-- [ ] Merge Sort
 - [ ] Heap Sort
+- [x] Merge Sort
 - [x] Quick Sort
 
 #### Graph Algorithms
