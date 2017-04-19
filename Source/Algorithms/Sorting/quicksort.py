@@ -2,12 +2,9 @@
 Fundamentals :: Algorithms :: Sorting Algorithms
 Author: Quinn Mortimer
 
-This file contains implementations of several sorting algorithms.
+This file contains an implementation of the quicksort algorithm.
 It is intended as a reference for those looking to brush up on important
 algorithms.
-
-Note: Despite the above message, this file only contains a quicksort
-implementation. More algorithms to come later.
 """
 
 def quicksort(a, low, high):
@@ -27,7 +24,6 @@ def quicksort(a, low, high):
     :param low: The index to start sorting at.
     :param high: The index to stop sorting at.
     """
-    global ct_ct
     if high > low + 1:
         idx_p = _quicksort_partition(a, low, high)
         quicksort(a, low, idx_p)
