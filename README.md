@@ -29,8 +29,8 @@ guess at some useful topics to cover.
 ## Algorithms
 
 #### Sorting Algorithms
-- [ ] Bubble Sort
 - [ ] Heap Sort
+- [x] Insertion Sort
 - [x] Merge Sort
 - [x] Quick Sort
 
