@@ -41,6 +41,11 @@ public:
 	HashMap_Node();
 	~HashMap_Node();
 	
+	// Using the default copy constructor leads to unsafe situations,
+	// and copying Values could be expensive.
+	// Since copying nodes is avoidable, it's better to just not do it.
+	HashMap_Node(const HashMap_Node& other) = delete;
+	
 	// Set or clear the values on this node.
 	void set(const Key& k, const Value& v);
 	void clear();
@@ -604,23 +609,19 @@ typename HashMap<Key, Value>::size_type HashMap<Key, Value>::m_findIndex(const K
 	
 	size_type idx_current = hashValue % m_nodes.size();
 	
-	Node n = m_nodes[idx_current];
-	
-	while (!n.empty() && n.key() != key) {
-		perturb = perturb >> HASHMAP_COLLISION_SHIFT;
+	while (!m_nodes[idx_current].empty() && m_nodes[idx_current].key() != key) {
 		idx_current = (idx_current * 5 + 1 + perturb) % m_nodes.size();
-		n = m_nodes[idx_current];
+		perturb = perturb >> HASHMAP_COLLISION_SHIFT;
 	}
 	
 	size_type idx_firstCandidate = idx_current;
 	
-	while (!n.unused() && !n.keyEqual(key)) {
-		perturb = perturb >> HASHMAP_COLLISION_SHIFT;
+	while (!m_nodes[idx_current].unused() && !m_nodes[idx_current].keyEqual(key)) {
 		idx_current = (idx_current * 5 + 1 + perturb) % m_nodes.size();
-		n = m_nodes[idx_current];
+		perturb = perturb >> HASHMAP_COLLISION_SHIFT;
 	}
 	
-	if (!n.unused()) {
+	if (!m_nodes[idx_current].unused()) {
 		return idx_current;
 	}
 	
