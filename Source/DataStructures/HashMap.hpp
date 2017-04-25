@@ -2,9 +2,9 @@
  * Fundamentals :: Data Structures :: Hash Map
  * Author: Quinn Mortimer
  *
- * This is an implementation of a Hash Map, which is one approach to
+ * This is an implementation of a hash map, which is one approach to
  * making an Associative Array-style data strucure.
- * It is intended as a reference for those looking to brush up on  important
+ * It is intended as a reference for those looking to brush up on important
  * data structures.
  */
 /**
@@ -26,10 +26,10 @@
 #define HASHMAP_DEFAULT_CAPACITY 8
 #define HASHMAP_GROWTH_FACTOR 2
 #define HASHMAP_MAX_LOAD_FACTOR 0.75
-#define HASHMAP_COLLISION_SHIFT 4;
+#define HASHMAP_COLLISION_SHIFT 4
 
 /**
- * A Node class for the slots in our HashMap
+ * A Node class for the slots in our HashMap.
  *
  * Stores the key and value, as well as some flags for internal properties of
  * the node.
@@ -126,7 +126,7 @@ class HashMap {
 		hash_type m_hash;
 		// The number of used slots in the underlying array.
 		size_type m_size;
-		// The size at which we will consider our hashmap too crowded.
+		// The size at which we will consider our HashMap too crowded.
 		size_type m_loadThreshold;
 		// The underlying array of nodes for our HashMap.
 		std::vector<Node> m_nodes;
@@ -136,7 +136,7 @@ class HashMap {
 		void m_rehash();
 		// - Swaps contents with another HashMap.
 		void m_swap(HashMap<Key, Value>& other);
-		// - Adds all keys in another hash map to the current map.
+		// - Adds all keys in another HashMap to the current map.
 		void m_update(const HashMap<Key, Value>& other);
 		
 		// This is in some ways the real workhorse function for this class.
@@ -150,9 +150,9 @@ class HashMap {
 /**
  * Default HashMap constructor - Invalid
  *
- * A hash map requires at least a hash function to be constructed.
+ * A HashMap requires at least a hash function to be constructed.
  *
- * @throws	MissingHashFunctionError	always.
+ * @throws	MissingHashFunctionError	always
  */
 template <typename Key, typename Value>
 HashMap<Key, Value>::HashMap() {
@@ -160,7 +160,7 @@ HashMap<Key, Value>::HashMap() {
 }
 /**
  * Constucts a HashMap with a hash function for the key type.
- * @param	hash	The hash function for this to use.
+ * @param	hash	The hash function for this to use
  */
 template <typename Key, typename Value>
 HashMap<Key, Value>::HashMap(const hash_type& hash) {
@@ -177,8 +177,8 @@ HashMap<Key, Value>::HashMap(const hash_type& hash) {
  * to the map without needing to enlarge the underlying array and rehash.
  * The number of used slots after construction is 0.
  *
- * @param	hash	The hash function for this to use.
- * @param	size	An amount of elements the table should be able to hold.
+ * @param	hash	The hash function for this to use
+ * @param	size	An amount of elements the table should be able to hold
  */
 template <typename Key, typename Value>
 HashMap<Key, Value>::HashMap(const hash_type& hash, size_type size) {
@@ -204,7 +204,7 @@ HashMap<Key, Value>::HashMap(const hash_type& hash, size_type size) {
 }
 /**
  * Constructs a HashMap by copying the contents of another.
- * @param	other	The HashMap to copy.
+ * @param	other	The HashMap to copy
  */
 template <typename Key, typename Value>
 HashMap<Key, Value>::HashMap(const HashMap<Key, Value>& other) {
@@ -225,8 +225,8 @@ HashMap<Key, Value>::HashMap(HashMap<Key, Value>&& other) {
 
 /**
  * Copy-assigns the contents of one HashMap to another.
- * @param	other	The map to copy from.
- * @return	The modified version of this, after copying.
+ * @param	other	The map to copy from
+ * @return	The modified version of this, after copying
  */
 template <typename Key, typename Value>
 HashMap<Key, Value>& HashMap<Key, Value>::operator=(const HashMap<Key, Value>& other) {
@@ -237,8 +237,8 @@ HashMap<Key, Value>& HashMap<Key, Value>::operator=(const HashMap<Key, Value>& o
 }
 /**
  * Move-assigns the contents of one HashMap to another.
- * @param	other	The map to swap contents with.
- * @return	The modified version of this, after the content swap.
+ * @param	other	The map to swap contents with
+ * @return	The modified version of this, after the content swap
  */
 template <typename Key, typename Value>
 HashMap<Key, Value>& HashMap<Key, Value>::operator=(HashMap<Key, Value>&& other) {
@@ -254,8 +254,8 @@ HashMap<Key, Value>& HashMap<Key, Value>::operator=(HashMap<Key, Value>&& other)
  * underlying array, so we need to iterate through the nodes on this array
  * and perform checks against the public interface of the other.
  *
- * @param	other	The HashMap to compare against.
- * @return	true if all keys of both map to the same values, otherwise false.
+ * @param	other	The HashMap to compare against
+ * @return	true if all keys of both map to the same values, otherwise false
  */
 template <typename Key, typename Value>
 bool HashMap<Key, Value>::operator==(const HashMap<Key, Value>& other) const {
@@ -277,8 +277,8 @@ bool HashMap<Key, Value>::operator==(const HashMap<Key, Value>& other) const {
 /**
  * Checks to see if two HashMaps are unequal.
  *
- * @param	other	The HashMap to compare against.
- * @return	false if all keys of both map to the same values, otherwise true.
+ * @param	other	The HashMap to compare against
+ * @return	false if all keys of both map to the same values, otherwise true
  */
 template <typename Key, typename Value>
 bool HashMap<Key, Value>::operator!=(const HashMap<Key, Value>& other) const {
@@ -287,7 +287,7 @@ bool HashMap<Key, Value>::operator!=(const HashMap<Key, Value>& other) const {
  
 /**
  * Reports the number of slots currently in-use in the HashMap.
- * @return	The number of valid key-value pairs in the map.
+ * @return	The number of valid key-value pairs in the map
  */
 template <typename Key, typename Value>
 typename HashMap<Key, Value>::size_type HashMap<Key, Value>::size() const {
@@ -295,7 +295,7 @@ typename HashMap<Key, Value>::size_type HashMap<Key, Value>::size() const {
 }
 /**
  * Reports whether or not the HashMap is empty.
- * @return	Whether there are any used slots in the map.
+ * @return	Whether there are any used slots in the map
  */
 template <typename Key, typename Value>
 bool HashMap<Key, Value>::empty() const {
@@ -304,9 +304,9 @@ bool HashMap<Key, Value>::empty() const {
 
 /**
  * Insert a key-value pair into the map.
- * @throws	DuplicateKeyError	When the key provided is already in the map.
- * @param	key	The key to insert a value for.
- * @param	value	The value that correspond to the key.
+ * @throws	DuplicateKeyError	When the key provided is already in the map
+ * @param	key	The key to insert a value for
+ * @param	value	The value that correspond to the key
  */
 template <typename Key, typename Value>
 void HashMap<Key, Value>::insert(const Key& key, const Value& value) {
@@ -325,8 +325,8 @@ void HashMap<Key, Value>::insert(const Key& key, const Value& value) {
 }
 /**
  * Removes a key, and its associated value, from the map.
- * @throws	MissingKeyError	If the requested key is not in the map.
- * @param	key	The key to remove.
+ * @throws	MissingKeyError	If the requested key is not in the map
+ * @param	key	The key to remove
  */
 template <typename Key, typename Value>
 void HashMap<Key, Value>::remove(const Key& key) {
@@ -345,8 +345,8 @@ void HashMap<Key, Value>::remove(const Key& key) {
  * This can be used as a permissive version of insert.
  * If the key was already in the map, it will just overwrite the old value.
  *
- * @param	key	The key to insert a value for.
- * @param	value	The value that correspond to the key.
+ * @param	key	The key to insert a value for
+ * @param	value	The value that correspond to the key
  */
 template <typename Key, typename Value>
 void HashMap<Key, Value>::set(const Key& key, const Value& value) {
@@ -370,7 +370,7 @@ void HashMap<Key, Value>::set(const Key& key, const Value& value) {
  * This is the permissiver version of remove. If the key was not in the map
  * in the first place, it just won't do anything.
  *
- * @param	key	The key to remove.
+ * @param	key	The key to remove
  */
 template <typename Key, typename Value>
 void HashMap<Key, Value>::unset(const Key& key) {
@@ -384,8 +384,8 @@ void HashMap<Key, Value>::unset(const Key& key) {
 
 /**
  * Checks if a key is currently in the map.
- * @param	key	The key to check for.
- * @return	A boolean representing whether or not the key exists.
+ * @param	key	The key to check for
+ * @return	A boolean representing whether or not the key exists
  */
 template <typename Key, typename Value>
 bool HashMap<Key, Value>::hasKey(const Key& key) const {
@@ -422,7 +422,7 @@ Value& HashMap<Key, Value>::operator[](const Key& key) {
  * In fact, we can't allow that as it would mean modifying the map to add a
  * new key-value pair.
  *
- * @throws	MissingKeyError	When the requested key is not in the map.
+ * @throws	MissingKeyError	When the requested key is not in the map
  * @param	key	The key to get the mapped value for
  * @return	A constant reference to the value key refers to
  */
@@ -442,7 +442,7 @@ const Value& HashMap<Key, Value>::operator[](const Key& key) const {
  * Unlike the indexing operator, we're not going to require that this will
  * correct missing key errors for the user.
  *
- * @throws	MissingKeyError	When the requested key is not in the map.
+ * @throws	MissingKeyError	When the requested key is not in the map
  * @param	key	The key to get the mapped value for
  * @return	A reference to the value key refers to
  */
@@ -463,8 +463,8 @@ Value& HashMap<Key, Value>::getValue(const Key& key) {
  * but since there is a non-const method by this name, a const one should exist
  * also for consistency.
  *
- * @throws	MissingKeyError	When the requested key is not in the map.
- * @param	key	The key to get the mapped value for.
+ * @throws	MissingKeyError	When the requested key is not in the map
+ * @param	key	The key to get the mapped value for
  * @return	A constant reference to the value key refers to
  */
 template <typename Key, typename Value>
@@ -546,7 +546,7 @@ void HashMap<Key, Value>::m_rehash() {
 }
 
 /**
- * Swaps the contents of this hashmap with that of another.
+ * Swaps the contents of this HashMap with that of another.
  * @param	other	Another HashMap to swap contents with
  */
 template <typename Key, typename Value>
@@ -558,7 +558,7 @@ void HashMap<Key, Value>::m_swap(HashMap<Key, Value>& other) {
 }
 /**
  * Adds the contents of another HashMap into this map.
- * @param	other	The map to add the contents from.
+ * @param	other	The map to add the contents from
  */
 template <typename Key, typename Value>
 void HashMap<Key, Value>::m_update(const HashMap<Key, Value>& other) {
@@ -693,7 +693,7 @@ bool HashMap_Node<Key, Value>::empty() const {
 }
 /**
  * Reports whether the node has ever had a key (and value) set.
- * @return The value of the unused flag on the node.
+ * @return The value of the unused flag on the node
  */
 template <typename Key, typename Value>
 bool HashMap_Node<Key, Value>::unused() const {
@@ -729,7 +729,7 @@ const Key& HashMap_Node<Key, Value>::key() const {
 	return *mp_key;
 }
 /**
- * Provides a constant reference to the key on this node.
+ * Provides a constant reference to the value on this node.
  *
  * It's unsafe to use this method if this node is empty. That condition should
  * always be checked before use, as this method dereferences mp_value
@@ -742,7 +742,7 @@ const Value& HashMap_Node<Key, Value>::value() const {
 	return *mp_value;
 }
 /**
- * Provides a reference to the key on this node.
+ * Provides a reference to the value on this node.
  *
  * It's unsafe to use this method if this node is empty. That condition should
  * always be checked before use, as this method dereferences mp_value
