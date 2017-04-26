@@ -45,5 +45,15 @@ class DuplicateKeyError : public Exception {
  */
 class MissingKeyError : public Exception {
 };
+/**
+ * Exception thrown when trying to insert a duplicate element into a HashSet.
+ */
+class DuplicateElementError : public Exception {
+};
+/**
+ * Exception thrown when looking up a missing element in a HashSet.
+ */
+class MissingElementError : public Exception {
+};
 
 #endif // Fundamentals_DS_Exceptions_hpp_
