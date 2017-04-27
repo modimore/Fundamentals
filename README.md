@@ -22,7 +22,7 @@ guess at some useful topics to cover.
 - [x] Dynamic Array
 - [x] Linked List
 - [x] Hash Map
-- [ ] Hash Set
+- [x] Hash Set
 - [ ] Binary Search Tree
 - [ ] Priority Queue
 
@@ -38,7 +38,7 @@ guess at some useful topics to cover.
 - [ ] Depth-first Search
 - [ ] Breadth-first Search
 - [x] Dijkstra's Algorithm
-- [ ] The Bellman-Ford Algorithm
+- [x] The Bellman-Ford Algorithm
 - [ ] The Floyd-Warshall Algorithm
 
 ### Mathematical
