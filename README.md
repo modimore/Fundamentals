@@ -35,8 +35,8 @@ guess at some useful topics to cover.
 - [x] Quick Sort
 
 #### Graph Algorithms
-- [ ] Depth-first Search
-- [ ] Breadth-first Search
+- [x] Depth-first Search
+- [x] Breadth-first Search
 - [x] Dijkstra's Algorithm
 - [x] The Bellman-Ford Algorithm
 - [ ] The Floyd-Warshall Algorithm
